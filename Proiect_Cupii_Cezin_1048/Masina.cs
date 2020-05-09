@@ -11,10 +11,10 @@ namespace Proiect_Cupii_Cezin_1048
         private int id;
         private string firma;
         private int anFabricate;
-        private float pret;
+        private int pret;
         private int[] modele;
 
-        public Masina(int id, string f, int d, float p, int[] m)
+        public Masina(int id, string f, int d, int p, int[] m)
         {
             this.id = id;
             this.Firma = f;
@@ -31,7 +31,7 @@ namespace Proiect_Cupii_Cezin_1048
         public int Id { get => id; set => id = value; }
         public string Firma { get => firma; set => firma = value; }
         public int AnFabricate { get => anFabricate; set => anFabricate = value; }
-        public float Pret { get => pret; set => pret = value; }
+        public int Pret { get => pret; set => pret = value; }
         public int[] Modele { get => modele; set => modele = value; }
 
         object ICloneable.Clone()

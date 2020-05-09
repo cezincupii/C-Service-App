@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRuta));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaRuta = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -38,6 +38,7 @@
             this.tbID = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonCitireMasini = new System.Windows.Forms.Button();
             this.buttonAdaugareRuta = new System.Windows.Forms.Button();
             this.buttonSalvareMasini = new System.Windows.Forms.Button();
@@ -66,7 +67,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonPrint = new System.Windows.Forms.Button();
+            this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.labelDashed = new System.Windows.Forms.Label();
             this.panelAdaugaRuta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
@@ -216,6 +220,14 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(163, 522);
             this.panel6.TabIndex = 31;
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
+            this.panelLeft.Location = new System.Drawing.Point(158, 2);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(5, 85);
+            this.panelLeft.TabIndex = 41;
             // 
             // buttonCitireMasini
             // 
@@ -418,7 +430,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8});
+            listViewItem2});
             this.listView1.Location = new System.Drawing.Point(0, 108);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(289, 267);
@@ -505,21 +517,57 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // panelLeft
+            // buttonPrint
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
-            this.panelLeft.Location = new System.Drawing.Point(158, 2);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(5, 85);
-            this.panelLeft.TabIndex = 41;
+            this.buttonPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPrint.FlatAppearance.BorderSize = 0;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.ForeColor = System.Drawing.Color.White;
+            this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
+            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.TabIndex = 45;
+            this.buttonPrint.Text = "Printeaza";
+            this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            // 
+            // DVPrintPreviewDialog1
+            // 
+            this.DVPrintPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.DVPrintPreviewDialog1.Enabled = true;
+            this.DVPrintPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("DVPrintPreviewDialog1.Icon")));
+            this.DVPrintPreviewDialog1.Name = "DVPrintPreviewDialog1";
+            this.DVPrintPreviewDialog1.Visible = false;
+            // 
+            // DVPrintDocument1
+            // 
+            this.DVPrintDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DVPrintDocument1_PrintPage);
+            // 
+            // labelDashed
+            // 
+            this.labelDashed.AutoSize = true;
+            this.labelDashed.Location = new System.Drawing.Point(175, 486);
+            this.labelDashed.Name = "labelDashed";
+            this.labelDashed.Size = new System.Drawing.Size(613, 17);
+            this.labelDashed.TabIndex = 46;
+            this.labelDashed.Text = "---------------------------------------------------------------------------------" +
+    "----------------------------------------";
             // 
             // FormRuta
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.labelDashed);
+            this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareRute);
             this.Controls.Add(this.panelAdaugaOprire);
             this.Controls.Add(this.panel6);
@@ -529,6 +577,8 @@
             this.Name = "FormRuta";
             this.Text = "FormRuta";
             this.Load += new System.EventHandler(this.FormRuta_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormRuta_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormRuta_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormRuta_KeyDown);
             this.panelAdaugaRuta.ResumeLayout(false);
             this.panelAdaugaRuta.PerformLayout();
@@ -541,6 +591,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -587,5 +638,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.PrintPreviewDialog DVPrintPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument DVPrintDocument1;
+        private System.Windows.Forms.Label labelDashed;
     }
 }

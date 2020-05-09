@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSofer));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaSofer = new System.Windows.Forms.Panel();
             this.tbTipCarnet = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -42,6 +42,7 @@
             this.tbID = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonCitireSoferi = new System.Windows.Forms.Button();
             this.buttonAdaugareSofer = new System.Windows.Forms.Button();
             this.buttonSalvareSoferi = new System.Windows.Forms.Button();
@@ -55,6 +56,7 @@
             this.textBoxAMID = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panelAfisareSoferi = new System.Windows.Forms.Panel();
+            this.labelDashed = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,7 +75,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panelLeft = new System.Windows.Forms.Panel();
+            this.buttonPrint = new System.Windows.Forms.Button();
+            this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelAdaugaSofer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel8.SuspendLayout();
@@ -82,6 +87,7 @@
             this.panelAfisareSoferi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelAdaugaSofer
@@ -270,6 +276,14 @@
             this.panel8.Size = new System.Drawing.Size(163, 522);
             this.panel8.TabIndex = 31;
             // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
+            this.panelLeft.Location = new System.Drawing.Point(158, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(5, 85);
+            this.panelLeft.TabIndex = 43;
+            // 
             // buttonCitireSoferi
             // 
             this.buttonCitireSoferi.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -442,12 +456,23 @@
             // 
             // panelAfisareSoferi
             // 
+            this.panelAfisareSoferi.Controls.Add(this.labelDashed);
             this.panelAfisareSoferi.Controls.Add(this.pictureBox3);
             this.panelAfisareSoferi.Controls.Add(this.listView1);
             this.panelAfisareSoferi.Location = new System.Drawing.Point(190, 17);
             this.panelAfisareSoferi.Name = "panelAfisareSoferi";
             this.panelAfisareSoferi.Size = new System.Drawing.Size(449, 493);
             this.panelAfisareSoferi.TabIndex = 39;
+            // 
+            // labelDashed
+            // 
+            this.labelDashed.AutoSize = true;
+            this.labelDashed.Location = new System.Drawing.Point(-3, 449);
+            this.labelDashed.Name = "labelDashed";
+            this.labelDashed.Size = new System.Drawing.Size(613, 17);
+            this.labelDashed.TabIndex = 45;
+            this.labelDashed.Text = "---------------------------------------------------------------------------------" +
+    "----------------------------------------";
             // 
             // pictureBox3
             // 
@@ -473,7 +498,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.listView1.Location = new System.Drawing.Point(3, 105);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(364, 267);
@@ -569,21 +594,50 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // panelLeft
+            // buttonPrint
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
-            this.panelLeft.Location = new System.Drawing.Point(158, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(5, 85);
-            this.panelLeft.TabIndex = 43;
+            this.buttonPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPrint.FlatAppearance.BorderSize = 0;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.ForeColor = System.Drawing.Color.White;
+            this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
+            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.TabIndex = 44;
+            this.buttonPrint.Text = "Printeaza";
+            this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            // 
+            // DVPrintPreviewDialog1
+            // 
+            this.DVPrintPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.DVPrintPreviewDialog1.Enabled = true;
+            this.DVPrintPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("DVPrintPreviewDialog1.Icon")));
+            this.DVPrintPreviewDialog1.Name = "DVPrintPreviewDialog1";
+            this.DVPrintPreviewDialog1.Visible = false;
+            // 
+            // DVPrintDocument1
+            // 
+            this.DVPrintDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DVPrintDocument1_PrintPage);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // FormSofer
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareSoferi);
             this.Controls.Add(this.panelAdaugaKM);
             this.Controls.Add(this.panel8);
@@ -593,6 +647,8 @@
             this.Name = "FormSofer";
             this.Text = "FormSofer";
             this.Load += new System.EventHandler(this.FormSofer_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormSofer_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormSofer_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormSofer_KeyDown);
             this.panelAdaugaSofer.ResumeLayout(false);
             this.panelAdaugaSofer.PerformLayout();
@@ -602,8 +658,10 @@
             this.panelAdaugaKM.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelAfisareSoferi.ResumeLayout(false);
+            this.panelAfisareSoferi.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -658,5 +716,10 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.PrintPreviewDialog DVPrintPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument DVPrintDocument1;
+        private System.Windows.Forms.Label labelDashed;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

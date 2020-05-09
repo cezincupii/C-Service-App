@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTransport));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaTransport = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.textBoxAMID = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
             this.buttonCitireTransporturi = new System.Windows.Forms.Button();
             this.buttonAdaugareTransport = new System.Windows.Forms.Button();
             this.buttonSalvareTransporturi = new System.Windows.Forms.Button();
@@ -64,7 +65,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panelLeft = new System.Windows.Forms.Panel();
+            this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.buttonPrint = new System.Windows.Forms.Button();
+            this.labelDashed = new System.Windows.Forms.Label();
             this.panelAdaugaTransport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelAdaugaGreutate.SuspendLayout();
@@ -273,6 +277,14 @@
             this.panel6.Size = new System.Drawing.Size(163, 522);
             this.panel6.TabIndex = 31;
             // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
+            this.panelLeft.Location = new System.Drawing.Point(155, 2);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(5, 85);
+            this.panelLeft.TabIndex = 42;
+            // 
             // buttonCitireTransporturi
             // 
             this.buttonCitireTransporturi.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -393,7 +405,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem8});
+            listViewItem3});
             this.listView1.Location = new System.Drawing.Point(3, 99);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(239, 267);
@@ -475,22 +487,58 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // panelLeft
+            // DVPrintDocument1
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(142)))), ((int)(((byte)(38)))));
-            this.panelLeft.Location = new System.Drawing.Point(155, 2);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(5, 85);
-            this.panelLeft.TabIndex = 42;
+            this.DVPrintDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.DVPrintDocument1_PrintPage);
+            // 
+            // DVPrintPreviewDialog1
+            // 
+            this.DVPrintPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.DVPrintPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.DVPrintPreviewDialog1.Enabled = true;
+            this.DVPrintPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("DVPrintPreviewDialog1.Icon")));
+            this.DVPrintPreviewDialog1.Name = "DVPrintPreviewDialog1";
+            this.DVPrintPreviewDialog1.Visible = false;
+            // 
+            // buttonPrint
+            // 
+            this.buttonPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPrint.FlatAppearance.BorderSize = 0;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.ForeColor = System.Drawing.Color.White;
+            this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
+            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.TabIndex = 45;
+            this.buttonPrint.Text = "Printeaza";
+            this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            // 
+            // labelDashed
+            // 
+            this.labelDashed.AutoSize = true;
+            this.labelDashed.Location = new System.Drawing.Point(191, 470);
+            this.labelDashed.Name = "labelDashed";
+            this.labelDashed.Size = new System.Drawing.Size(613, 17);
+            this.labelDashed.TabIndex = 46;
+            this.labelDashed.Text = "---------------------------------------------------------------------------------" +
+    "----------------------------------------";
             // 
             // FormTransport
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.labelDashed);
+            this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareTransporturi);
             this.Controls.Add(this.panelAdaugaGreutate);
             this.Controls.Add(this.panel6);
@@ -500,6 +548,8 @@
             this.Name = "FormTransport";
             this.Text = "FormTransport";
             this.Load += new System.EventHandler(this.FormTransport_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormTransport_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormTransport_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormTransport_KeyDown);
             this.panelAdaugaTransport.ResumeLayout(false);
             this.panelAdaugaTransport.PerformLayout();
@@ -512,6 +562,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -556,5 +607,9 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panelLeft;
+        private System.Drawing.Printing.PrintDocument DVPrintDocument1;
+        private System.Windows.Forms.PrintPreviewDialog DVPrintPreviewDialog1;
+        private System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.Label labelDashed;
     }
 }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Drawing.Drawing2D;
+using System.Text.RegularExpressions;
 
 namespace Proiect_Cupii_Cezin_1048 {
     public partial class FormMasina : Form {
@@ -59,41 +61,68 @@ namespace Proiect_Cupii_Cezin_1048 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-           
-    
+            MsgBox msg = new MsgBox();
+                bool valid = true;
+            if (tbID.Text == "" || tbID.Text == "ID") {
+                valid = false;
+                msg.textProperty += "INTRODU ID UL! \n";  
+            }
+            else if (tbFirma.Text == "" || tbFirma.Text == "Firma") {
+                msg.textProperty += "INTRODU FIRMA! \n";
+                valid = false;
+            }
+            else if (tbAnFabricatie.Text == "" || tbAnFabricatie.Text == "An Fabricatie") {
+                msg.textProperty += "INTRODU ANUL FABRICATIEI! \n";
+                valid = false;
+            }
+            else if (tbPret.Text == "" || tbPret.Text == "Pret") {
+                msg.textProperty += "INTRODU PRETUL!\n";
+                valid = false;
+            }
+            else if (!Regex.IsMatch(tbFirma.Text, @"^[a-zA-Z]+$")) {
+                valid = false;
+                msg.textProperty += "Numele firmei trebuie sa contina doar litere";
+                tbFirma.Text = "";
+            }
+            else if (!Regex.IsMatch(tbAnFabricatie.Text, "^[0-9]*$")) {
+                valid = false;
+                msg.textProperty += "Anul fabricatiei trebuie sa fie alcatuit din cifre";
+                tbAnFabricatie.Text = "";
+            }
+            else if (Convert.ToInt32(tbAnFabricatie.Text) > 2020) {
+                valid = false;
+                msg.textProperty += "Anul fabricatiei trebuie sa fie < 2020";
+                tbAnFabricatie.Text = "";
+            }
+            else if (!Regex.IsMatch(tbPret.Text, "^[0-9]*$")) {
+                valid = false;
+                msg.textProperty += "Pretul trebuie sa fie alcatuit din cifre";
+                tbPret.Text = "";
+            }
+            else if (Convert.ToInt32(tbPret.Text)<0) {
+                valid = false;
+                msg.textProperty += "Pretul trebuie sa fie >0";
+                tbPret.Text = "";
+            }
+
+            if(valid)
             try {
-                if (tbID.Text == "") {
-                    MessageBox.Show("Introduceti ID-ul", "EROARE!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
-          if (tbFirma.Text == "") {
-                    MessageBox.Show("Introduceti firma", "EROARE!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                }
-                
-          if (tbAnFabricatie.Text == "") {
-                    MessageBox.Show("Introduceti Anul fabricatiei", "EROARE!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            
-          if (tbPret.Text == "") {
-                    MessageBox.Show("Introduceti pretul", "EROARE!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
                 int id = Convert.ToInt32(tbID.Text);
                 string firma = tbFirma.Text;
                 int anFabricatie = Convert.ToInt32(tbAnFabricatie.Text);
-                float pret = (float)Convert.ToInt32(tbPret.Text);
+                int pret = Convert.ToInt32(tbPret.Text);
                 int[] modele = new int[10];
                 for (int i = 0; i < 10; i++)
-                    modele[i] = 0;
-                
-                Masina m = new Masina(id, firma, anFabricatie, pret, modele);
-                listaMasina.Add(m);
-                MessageBox.Show("Masina adaugata!");
-            }
+                    modele[i] = 0;       
+                    Masina m = new Masina(id, firma, anFabricatie, pret, modele);
+                    listaMasina.Add(m);
+                    msg.textProperty = "Felicitari! Ai introdus un sofer cu succes!";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+                }
             catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);              
             }
             finally {
                 tbID.Text = "ID";
@@ -101,11 +130,15 @@ namespace Proiect_Cupii_Cezin_1048 {
                 tbAnFabricatie.Text = "An Fabricatie";
                 tbPret.Text = "Pret";
             }
+            else {
+                msg.StartPosition = FormStartPosition.CenterScreen;
+                msg.Show();
+            }
 
         }
 
         private void FormMasina_Load(object sender, EventArgs e) {
-            
+            labelDashed.Hide();
             panelAfisareMasini.Hide();
             panelAdaugaModel.Hide();
             this.KeyPreview = true;
@@ -136,6 +169,7 @@ namespace Proiect_Cupii_Cezin_1048 {
                 itm.SubItems.Add(m.AnFabricate.ToString());
                 itm.SubItems.Add(m.Pret.ToString());
                 listView1.Items.Add(itm);
+                
             }
 
         }
@@ -158,14 +192,14 @@ namespace Proiect_Cupii_Cezin_1048 {
             openFileDialog1.Filter = "(*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
                 StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                string linie = null;
                 try {
-                    while (sr.ReadLine() != null) {
-                        string[] elements = sr.ReadLine().Split(',');
-
+                    while ((linie = sr.ReadLine()) != null) {
+                        string[] elements = linie.Split(',');
                         int id = Convert.ToInt32(elements[0]);
                         string firma = elements[1];
                         int anFabricatie = Convert.ToInt32(elements[2]);
-                        float pret = (float)Convert.ToInt32(elements[3]);
+                        int pret = Convert.ToInt32(elements[3]);
                         int[] modele = new int[10];
                         for (int i = 0; i < 6; i++) {
                             modele[i] = Convert.ToInt32(elements[i + 4]);
@@ -175,7 +209,12 @@ namespace Proiect_Cupii_Cezin_1048 {
                     }
                 }
                 catch(Exception ex) {
-                    MessageBox.Show(ex.Message);
+                    MsgBox msg = new MsgBox {
+                        textProperty = "DATELE S-AU INCARCAT CU SUCCES!"
+                    };
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+                   
                 }
 
                 sr.Close();
@@ -210,11 +249,21 @@ namespace Proiect_Cupii_Cezin_1048 {
                         }
 
                     }
-                    if (ok == false)
-                        MessageBox.Show("Felicitari! Ai introdus modele cu succes!");
+                    if (ok == false) {
+                    MsgBox msg = new MsgBox();
+                    msg.textProperty = "Felicitari! Ai introdus modele cu succes!";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+
+                }
+                        
                 }
              if(ok==true) {
-                MessageBox.Show("Nu s-a gasit ID-ul!");
+                MsgBox msg = new MsgBox {
+                        textProperty = "Nu a fost gasit ID-ul"
+                    };
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
             }
         }
 
@@ -285,6 +334,137 @@ namespace Proiect_Cupii_Cezin_1048 {
 
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e) {
+            DVPrintPreviewDialog1.Document = DVPrintDocument1;
+            DVPrintPreviewDialog1.ShowDialog();
+        }
+
+        private void DVPrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
+            Bitmap bmp = Properties.Resources.logo;
+            Image logo = bmp;
+            Random rnd = new Random();
+            e.Graphics.DrawImage(logo, (e.PageBounds.Width-logo.Width) / 2,40, 150, 150);
+            
+            e.Graphics.DrawString("Print Nr: "+rnd.Next(1,100)+"/2020", new Font("Century Gothic", 12), Brushes.Black, new Point(50, 75));
+            e.Graphics.DrawString("" + DateTime.Now, new Font("Century Gothic", 12), Brushes.Black, new Point(50, 95));
+            e.Graphics.DrawString("User: " + DateTime.Now, new Font("Century Gothic", 12,FontStyle.Bold), Brushes.Black, new Point(50, 125));
+            e.Graphics.DrawString("RAPORT INTERMEDIAR", new Font("Century Gothic", 15,FontStyle.Bold), Brushes.Black, new Point((e.PageBounds.Width-200)/2, 250));
+            e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 285));
+            e.Graphics.DrawString("ID", new Font("Century Gothic", 12), Brushes.Black, new Point(125, 315));
+            e.Graphics.DrawString("Firma", new Font("Century Gothic", 12), Brushes.Black, new Point(325, 315));
+            e.Graphics.DrawString("An Fabricatie", new Font("Century Gothic", 12), Brushes.Black, new Point(525, 315));
+            e.Graphics.DrawString("Pret", new Font("Century Gothic", 12), Brushes.Black, new Point(725, 315));
+            e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 345));
+            int y = 370;
+            double pretMic = 0;
+            double pretMediu = 0;
+            double pretMare = 0;
+            double pretTotal = 0;
+            double count = 0;
+            foreach (Masina m in listaMasina) {
+ 
+                    e.Graphics.DrawString(m.Id.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(125, y));
+                    e.Graphics.DrawString(m.Firma, new Font("Century Gothic", 12), Brushes.Black, new Point(325, y));
+                    e.Graphics.DrawString(m.AnFabricate.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(550, y));
+                    e.Graphics.DrawString(m.Pret.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(725, y));
+                    y += 30;
+                if (m.Pret < 2500) {
+                    pretMic++;
+                }
+                if (m.Pret > 2500 && m.Pret < 5000) {
+                    pretMediu++;
+                }
+                if (m.Pret > 5000) {
+                    pretMare++;
+                }
+                pretTotal += m.Pret;
+                count++;
+            }
+            e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, y));
+            e.Graphics.DrawString("GRAFIC PRETURI", new Font("Century Gothic", 18, FontStyle.Bold), Brushes.Black, new Point(210, y += 50));
+
+            //GRAFIC
+            //#293541 #2B6C79 #47A896
+            double calculMic, calculMediu, calculMare, calculMedie;
+            calculMic = (pretMic / count) * 360;
+            calculMediu = (pretMediu / count) * 360;
+            calculMare = (pretMare / count) * 360;
+            calculMedie = pretTotal / count;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            const int width = 200;
+
+            Graphics gr = e.Graphics;
+            Pen outline_pen = Pens.Red;
+
+            SolidBrush smallBrush = new SolidBrush(Color.FromArgb(255, 41, 53, 65));
+            SolidBrush mediumBrush = new SolidBrush(Color.FromArgb(255, 43, 108, 121));
+            SolidBrush bigBrush = new SolidBrush(Color.FromArgb(255, 71, 168, 150));
+
+            using (Pen ellipse_pen = new Pen(Color.White)) {
+                Rectangle rect =
+                    new Rectangle(200, y += 60, width, width);
+                gr.DrawEllipse(ellipse_pen, rect);
+
+                gr.FillPie(smallBrush, rect, 0, (float)calculMic);
+                gr.FillPie(mediumBrush, rect, (float)calculMic, (float)calculMediu);
+                gr.FillPie(bigBrush, rect, (float)calculMediu + (float)calculMic, (float)calculMare);
+
+            }
+
+            e.Graphics.DrawString("\u25C9 0-2500 € ", new Font("Century Gothic", 18), smallBrush, new Point(500, y += 30));
+            e.Graphics.DrawString("\u25C9 2500-5000 €", new Font("Century Gothic", 18), mediumBrush, new Point(500, y += 30));
+            e.Graphics.DrawString("\u25C9 5000+ €", new Font("Century Gothic", 18), bigBrush, new Point(500, y += 30));
+            e.Graphics.DrawString("\u25C9 pret mediu: " + calculMedie + " €", new Font("Century Gothic", 18), Brushes.Black, new Point(500, y += 30));
+
+
+            //Semantura
+            Bitmap bmp2 = Properties.Resources.Semnatura_Cezin;
+            Image semnatura = bmp2;
+            e.Graphics.DrawString("Cezin Cupii", new Font("Century Gothic", 12), Brushes.Black, new Point(675, e.PageBounds.Height - 100));
+            e.Graphics.DrawImage(semnatura, 675, e.PageBounds.Height - 90, 100, 100);
+
+        }
+
+        private void FormMasina_DragDrop(object sender, DragEventArgs e) {
+            MsgBox msg = new MsgBox();
+            if(e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                StreamReader sr = new StreamReader(files[0]);
+                string linie = null;
+                try {
+                    while ((linie = sr.ReadLine()) != null) {
+                        string[] elements = linie.Split(',');
+                        int id = Convert.ToInt32(elements[0]);
+                        string firma = elements[1];
+                        int anFabricatie = Convert.ToInt32(elements[2]);
+                        int pret = Convert.ToInt32(elements[3]);
+                        int[] modele = new int[10];
+                        for (int i = 0; i < 6; i++) {
+                            modele[i] = Convert.ToInt32(elements[i + 4]);
+                        }
+                        Masina m = new Masina(id, firma, anFabricatie, pret, modele);
+                        listaMasina.Add(m);
+                    }
+                }
+                catch (Exception ex) {
+                    msg.textProperty = "DATELE S-AU INCARCAT CU SUCCES!";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+
+                }
+
+                sr.Close();
+            }
+        }
+
+        private void FormMasina_DragEnter(object sender, DragEventArgs e) {
+            e.Effect = DragDropEffects.All;
         }
     }
 }

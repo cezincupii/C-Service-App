@@ -261,6 +261,7 @@
             // 
             // panelDesktop
             // 
+            this.panelDesktop.AllowDrop = true;
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(200, 91);

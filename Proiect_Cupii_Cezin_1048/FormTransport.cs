@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -48,6 +49,31 @@ namespace Proiect_Cupii_Cezin_1048 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+            MsgBox msg = new MsgBox();
+            bool valid = true;
+            if (tbID.Text == "" || tbID.Text == "ID") {
+                msg.textProperty += "Introdu ID-ul";
+                valid = false;
+            }
+            else if (tbDestinatie.Text == "" || tbDestinatie.Text == "Destinatie") {
+                msg.textProperty += "Introdu Destinatia";
+                valid = false;
+            }
+            else if (tbFirma.Text == "" || tbFirma.Text == "Firma") {
+                msg.textProperty += "Introdu Firma";
+                valid = false;
+            }
+            else if (!Regex.IsMatch(tbFirma.Text, @"^[a-zA-Z]+$")) {
+                valid = false;
+                msg.textProperty += "Firma trebuie sa contina doar litere";
+                tbFirma.Text = "";
+            }
+            else if (!Regex.IsMatch(tbDestinatie.Text, @"^[a-zA-Z]+$")) {
+                valid = false;
+                msg.textProperty += "Destinatia trebuie sa contina doar litere";
+                tbDestinatie.Text = "";
+            }
+            if(valid)
             try {
                 int id = Convert.ToInt32(tbID.Text);
                 string firma = tbFirma.Text;
@@ -58,22 +84,32 @@ namespace Proiect_Cupii_Cezin_1048 {
                 }
                 Transporturi t = new Transporturi(id, firma, destinatie, greutateTransport);
                 listaTransport.Add(t);
-                MessageBox.Show("Felicitari, ai adaugat un transport cu succes!");
+                msg.textProperty = "Felicitari! Ai introdus un transport cu succes!";
+                msg.StartPosition = FormStartPosition.CenterScreen;
+                msg.Show();
 
             }
             catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-            }
+                    msg.textProperty = "EROARE! Ia legatura cu administratorul aplicatiei";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+                }
             finally {
                 tbID.Text = "ID";
                 tbFirma.Text = "Firma";
                 tbDestinatie.Text = "Destinatie";
+            }
+            else {
+                msg.StartPosition = FormStartPosition.CenterScreen;
+                msg.Show();
             }
         }
 
         private void FormTransport_Load(object sender, EventArgs e) {
             panelAdaugaGreutate.Hide();
             panelAfisareTransporturi.Hide();
+            labelDashed.Hide();
+            textBoxGreutati.Text = "Greutate";
         }
 
         private void buttonAdaugareTransport_Click(object sender, EventArgs e) {
@@ -109,9 +145,9 @@ namespace Proiect_Cupii_Cezin_1048 {
 
         private void buttonAdaugaGreutate_Click(object sender, EventArgs e) {
             bool ok = true;
+            MsgBox msg = new MsgBox();
             if (ok) {
                 foreach (Transporturi t in listaTransport) {
-
                     if (t.IdTransport == Convert.ToInt32(textBoxAMID.Text)) {
                         ok = false;
                         string[] greutatiS = textBoxGreutati.Text.Split(',');
@@ -121,11 +157,18 @@ namespace Proiect_Cupii_Cezin_1048 {
                     }
 
                 }
-                if (ok == false)
-                    MessageBox.Show("Felicitari! Ai introdus modele cu succes!");
+                if (ok == false) {
+                    msg.textProperty = "Felicitari! Ai introdus greutate cu succes!";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+                }
+                    
             }
             if (ok == true) {
-                MessageBox.Show("Nu s-a gasit ID-ul!");
+
+                msg.textProperty = "Felicitari! Ai introdus greutate cu succes!";
+                msg.StartPosition = FormStartPosition.CenterScreen;
+                msg.Show();
             }
         }
 
@@ -162,8 +205,9 @@ namespace Proiect_Cupii_Cezin_1048 {
             openFileDialog1.Filter = "(*.txt)|*.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
                 StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                string linie = null;
                 try {
-                    while (sr.ReadLine() != null) {
+                    while ((linie = sr.ReadLine()) != null) {
                         string[] elements = sr.ReadLine().Split(',');
 
                         int id = Convert.ToInt32(elements[0]);
@@ -178,10 +222,18 @@ namespace Proiect_Cupii_Cezin_1048 {
                         listaTransport.Add(t);
                         
                     }
-                    MessageBox.Show("Fisier citit cu succes!");
+                    MsgBox msg = new MsgBox {
+                        textProperty = "Fisier citit cu succes!",
+                        StartPosition = FormStartPosition.CenterScreen
+                    };
+                    msg.Show();
                 }
                 catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                    MsgBox msg = new MsgBox {
+                        textProperty = ex.Message,
+                        StartPosition = FormStartPosition.CenterScreen
+                    };
+                    msg.Show();
                 }
 
                 sr.Close();
@@ -253,6 +305,85 @@ namespace Proiect_Cupii_Cezin_1048 {
             if (e.Control == true && e.KeyCode == Keys.E) {
                 buttonVizualizareTransporturi.PerformClick();
             }
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e) {
+            DVPrintPreviewDialog1.Document = DVPrintDocument1;
+            DVPrintPreviewDialog1.ShowDialog();
+        }
+
+        private void DVPrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
+            Bitmap bmp = Properties.Resources.logo;
+            Image logo = bmp;
+            Random rnd = new Random();
+            e.Graphics.DrawImage(logo, (e.PageBounds.Width - logo.Width) / 2, 40, 150, 150);
+
+            e.Graphics.DrawString("Print Nr: " + rnd.Next(1, 100) + "/2020", new Font("Century Gothic", 12), Brushes.Black, new Point(50, 75));
+            e.Graphics.DrawString("" + DateTime.Now, new Font("Century Gothic", 12), Brushes.Black, new Point(50, 95));
+            e.Graphics.DrawString("User: " + DateTime.Now, new Font("Century Gothic", 12, FontStyle.Bold), Brushes.Black, new Point(50, 125));
+            e.Graphics.DrawString("RAPORT INTERMEDIAR", new Font("Century Gothic", 15, FontStyle.Bold), Brushes.Black, new Point((e.PageBounds.Width - 200) / 2, 250));
+            e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 285));
+            e.Graphics.DrawString("ID", new Font("Century Gothic", 12), Brushes.Black, new Point(125, 315));
+            e.Graphics.DrawString("Firma", new Font("Century Gothic", 12), Brushes.Black, new Point(400, 315));
+            e.Graphics.DrawString("Destinatie", new Font("Century Gothic", 12), Brushes.Black, new Point(675, 315));
+            e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 345));
+            int y = 370;
+
+            foreach (Transporturi t in listaTransport) {
+                e.Graphics.DrawString(t.IdTransport.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(125, y));
+                e.Graphics.DrawString(t.NumeFirma.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(400, y));
+                e.Graphics.DrawString(t.Destinatie.ToString(), new Font("Century Gothic", 12), Brushes.Black, new Point(675, y));
+
+                y += 30;
+
+            }
+            //Semantura
+            Bitmap bmp2 = Properties.Resources.Semnatura_Cezin;
+            Image semnatura = bmp2;
+            e.Graphics.DrawString("Cezin Cupii", new Font("Century Gothic", 12), Brushes.Black, new Point(675, e.PageBounds.Height - 100));
+            e.Graphics.DrawImage(semnatura, 675, e.PageBounds.Height - 90, 100, 100);
+        }
+
+        private void FormTransport_DragDrop(object sender, DragEventArgs e) {
+            MsgBox msg = new MsgBox();
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                StreamReader sr = new StreamReader(files[0]);
+                string linie = null;
+                try {
+                    while ((linie = sr.ReadLine()) != null) {
+                        string[] elements = sr.ReadLine().Split(',');
+
+                        int id = Convert.ToInt32(elements[0]);
+                        string firma = elements[1];
+                        string destinatie = elements[2];
+
+                        int[] greutate = new int[10];
+                        for (int i = 0; i < 10; i++) {
+                            greutate[i] = Convert.ToInt32(elements[i + 3]);
+                        }
+                        Transporturi t = new Transporturi(id, firma, destinatie, greutate);
+                        listaTransport.Add(t);
+
+                    }
+
+                    msg.textProperty = "Fisier citit cu succes!";
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                    msg.Show();
+                }
+                catch (Exception ex) {
+
+                    msg.textProperty = ex.Message;
+                    msg.StartPosition = FormStartPosition.CenterScreen;
+                        msg.Show();
+                }
+
+                sr.Close();
+            }
+        }
+
+        private void FormTransport_DragEnter(object sender, DragEventArgs e) {
+            e.Effect = DragDropEffects.All;
         }
     }
 }

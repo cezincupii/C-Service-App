@@ -22,7 +22,6 @@ C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\bin\D
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.application
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.exe
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.pdb
-C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csprojAssemblyReference.cache
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Form1.resources
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormMasina.resources
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormRuta.resources
@@ -41,3 +40,6 @@ C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\bin\D
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csproj.CopyComplete
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.MsgBox.resources
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Login.resources
+C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Register.resources
+C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Copyright.resources
+C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csprojAssemblyReference.cache

@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMasina));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugareMasina = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.buttonVizualizareMasini = new System.Windows.Forms.Button();
             this.buttonAdaugareModel = new System.Windows.Forms.Button();
             this.panelAfisareMasini = new System.Windows.Forms.Panel();
+            this.copyright1 = new Proiect_Cupii_Cezin_1048.Copyright();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -313,12 +314,21 @@
             // 
             // panelAfisareMasini
             // 
+            this.panelAfisareMasini.Controls.Add(this.copyright1);
             this.panelAfisareMasini.Controls.Add(this.pictureBox3);
             this.panelAfisareMasini.Controls.Add(this.listView1);
             this.panelAfisareMasini.Location = new System.Drawing.Point(222, 12);
             this.panelAfisareMasini.Name = "panelAfisareMasini";
             this.panelAfisareMasini.Size = new System.Drawing.Size(289, 375);
             this.panelAfisareMasini.TabIndex = 31;
+            // 
+            // copyright1
+            // 
+            this.copyright1.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyright1.Location = new System.Drawing.Point(0, -1);
+            this.copyright1.Name = "copyright1";
+            this.copyright1.Size = new System.Drawing.Size(110, 81);
+            this.copyright1.TabIndex = 47;
             // 
             // pictureBox3
             // 
@@ -342,7 +352,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.listView1.Location = new System.Drawing.Point(0, 108);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(289, 267);
@@ -537,6 +547,7 @@
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonPrint.UseVisualStyleBackColor = true;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            this.buttonPrint.MouseHover += new System.EventHandler(this.buttonPrint_MouseHover);
             // 
             // DVPrintPreviewDialog1
             // 
@@ -649,5 +660,6 @@
         private System.Windows.Forms.PrintPreviewDialog DVPrintPreviewDialog1;
         private System.Drawing.Printing.PrintDocument DVPrintDocument1;
         private System.Windows.Forms.Label labelDashed;
+        private Copyright copyright1;
     }
 }

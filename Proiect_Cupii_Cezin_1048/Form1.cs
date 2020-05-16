@@ -8,22 +8,24 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Proiect_Cupii_Cezin_1048
 {
     public partial class Form1 : Form
     {
+        Thread th;
         
-
+        
         FormMasina frmMasina = new FormMasina() { Dock = DockStyle.Fill, TopLevel = false };
         FormSofer frmSofer = new FormSofer() { Dock = DockStyle.Fill, TopLevel = false };
         FormTransport frmTransport = new FormTransport() { Dock = DockStyle.Fill, TopLevel = false };
         FormRuta frmRuta = new FormRuta() { Dock = DockStyle.Fill, TopLevel = false };
         HomePage homepage = new HomePage() { Dock = DockStyle.Fill, TopLevel = false };
-        
 
         public Form1()
         {
+            
             
             InitializeComponent();
             panelLeft.Height = buttonAdaugareSofer.Height;
@@ -167,7 +169,14 @@ namespace Proiect_Cupii_Cezin_1048
         }
 
         private void labelLogout_Click(object sender, EventArgs e) {
-            Application.Exit();
+            this.Close();
+            th = new Thread(openLogin);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+
+        private void openLogin() {
+            Application.Run(new Login());
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e) {

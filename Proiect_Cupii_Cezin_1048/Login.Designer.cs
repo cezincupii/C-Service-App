@@ -36,6 +36,9 @@
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.pictureBoxUser = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPassword)).BeginInit();
@@ -69,11 +72,10 @@
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.White;
-            this.textBoxPassword.Location = new System.Drawing.Point(322, 186);
+            this.textBoxPassword.Location = new System.Drawing.Point(322, 169);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(435, 25);
-            this.textBoxPassword.TabIndex = 35;
-            this.textBoxPassword.TabStop = false;
+            this.textBoxPassword.TabIndex = 34;
             this.textBoxPassword.Text = "Parola";
             this.textBoxPassword.Click += new System.EventHandler(this.textBoxPassword_Click);
             this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
@@ -81,7 +83,7 @@
             // panelPassword
             // 
             this.panelPassword.BackColor = System.Drawing.Color.White;
-            this.panelPassword.Location = new System.Drawing.Point(322, 214);
+            this.panelPassword.Location = new System.Drawing.Point(322, 197);
             this.panelPassword.Name = "panelPassword";
             this.panelPassword.Size = new System.Drawing.Size(435, 1);
             this.panelPassword.TabIndex = 36;
@@ -92,7 +94,7 @@
             this.textBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUser.ForeColor = System.Drawing.Color.White;
-            this.textBoxUser.Location = new System.Drawing.Point(322, 121);
+            this.textBoxUser.Location = new System.Drawing.Point(322, 104);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(435, 25);
             this.textBoxUser.TabIndex = 33;
@@ -103,7 +105,7 @@
             // panelUser
             // 
             this.panelUser.BackColor = System.Drawing.Color.White;
-            this.panelUser.Location = new System.Drawing.Point(322, 149);
+            this.panelUser.Location = new System.Drawing.Point(322, 132);
             this.panelUser.Name = "panelUser";
             this.panelUser.Size = new System.Drawing.Size(435, 1);
             this.panelUser.TabIndex = 34;
@@ -111,7 +113,7 @@
             // pictureBoxPassword
             // 
             this.pictureBoxPassword.Image = global::Proiect_Cupii_Cezin_1048.Properties.Resources.password;
-            this.pictureBoxPassword.Location = new System.Drawing.Point(270, 176);
+            this.pictureBoxPassword.Location = new System.Drawing.Point(270, 159);
             this.pictureBoxPassword.Name = "pictureBoxPassword";
             this.pictureBoxPassword.Size = new System.Drawing.Size(37, 43);
             this.pictureBoxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -144,9 +146,11 @@
             this.button1.TabIndex = 40;
             this.button1.Text = "LOGIN";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel1
             // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(38)))), ((int)(((byte)(47)))));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
@@ -156,6 +160,7 @@
             this.linkLabel1.TabIndex = 41;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Nu ai cont? Inregistreaza-te";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // buttonMinimize
             // 
@@ -186,16 +191,56 @@
             this.buttonClose.TabIndex = 42;
             this.buttonClose.Text = "O";
             this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // pictureBoxUser
             // 
             this.pictureBoxUser.Image = global::Proiect_Cupii_Cezin_1048.Properties.Resources.user;
-            this.pictureBoxUser.Location = new System.Drawing.Point(270, 107);
+            this.pictureBoxUser.Location = new System.Drawing.Point(270, 90);
             this.pictureBoxUser.Name = "pictureBoxUser";
             this.pictureBoxUser.Size = new System.Drawing.Size(37, 43);
             this.pictureBoxUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxUser.TabIndex = 45;
             this.pictureBoxUser.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox1.Location = new System.Drawing.Point(619, 204);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(137, 23);
+            this.checkBox1.TabIndex = 36;
+            this.checkBox1.Text = "Afiseaza parola";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBoxRememberMe
+            // 
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxRememberMe.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(322, 204);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(125, 23);
+            this.checkBoxRememberMe.TabIndex = 46;
+            this.checkBoxRememberMe.Text = "Tine-ma logat";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            this.checkBoxRememberMe.CheckedChanged += new System.EventHandler(this.checkBoxRememberMe_CheckedChanged);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.LinkColor = System.Drawing.Color.White;
+            this.linkLabel2.Location = new System.Drawing.Point(641, 227);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(115, 19);
+            this.linkLabel2.TabIndex = 47;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Ai uitat parola?";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // Login
             // 
@@ -203,6 +248,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(780, 330);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.checkBoxRememberMe);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBoxUser);
             this.Controls.Add(this.buttonMinimize);
             this.Controls.Add(this.buttonClose);
@@ -220,6 +268,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPassword)).EndInit();
@@ -244,5 +293,8 @@
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.PictureBox pictureBoxUser;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxRememberMe;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

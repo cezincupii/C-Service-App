@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSofer));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaSofer = new System.Windows.Forms.Panel();
             this.tbTipCarnet = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -56,6 +56,7 @@
             this.textBoxAMID = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panelAfisareSoferi = new System.Windows.Forms.Panel();
+            this.copyright1 = new Proiect_Cupii_Cezin_1048.Copyright();
             this.labelDashed = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -456,6 +457,7 @@
             // 
             // panelAfisareSoferi
             // 
+            this.panelAfisareSoferi.Controls.Add(this.copyright1);
             this.panelAfisareSoferi.Controls.Add(this.labelDashed);
             this.panelAfisareSoferi.Controls.Add(this.pictureBox3);
             this.panelAfisareSoferi.Controls.Add(this.listView1);
@@ -463,6 +465,14 @@
             this.panelAfisareSoferi.Name = "panelAfisareSoferi";
             this.panelAfisareSoferi.Size = new System.Drawing.Size(449, 493);
             this.panelAfisareSoferi.TabIndex = 39;
+            // 
+            // copyright1
+            // 
+            this.copyright1.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyright1.Location = new System.Drawing.Point(0, -16);
+            this.copyright1.Name = "copyright1";
+            this.copyright1.Size = new System.Drawing.Size(110, 81);
+            this.copyright1.TabIndex = 46;
             // 
             // labelDashed
             // 
@@ -498,7 +508,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.listView1.Location = new System.Drawing.Point(3, 105);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(364, 267);
@@ -604,12 +614,13 @@
             this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
             this.buttonPrint.Location = new System.Drawing.Point(509, 19);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.Size = new System.Drawing.Size(120, 63);
             this.buttonPrint.TabIndex = 44;
             this.buttonPrint.Text = "Printeaza";
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonPrint.UseVisualStyleBackColor = true;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            this.buttonPrint.MouseHover += new System.EventHandler(this.buttonPrint_MouseHover);
             // 
             // DVPrintPreviewDialog1
             // 
@@ -637,10 +648,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareSoferi);
             this.Controls.Add(this.panelAdaugaKM);
-            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panelAdaugaSofer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
@@ -721,5 +732,6 @@
         private System.Drawing.Printing.PrintDocument DVPrintDocument1;
         private System.Windows.Forms.Label labelDashed;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Copyright copyright1;
     }
 }

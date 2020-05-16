@@ -11,15 +11,17 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
+using System.Data.OleDb;
 
 namespace Proiect_Cupii_Cezin_1048 {
     public partial class FormMasina : Form {
-
+        string connString;
         List<Masina> listaMasina = new List<Masina>();
         public FormMasina() {
             InitializeComponent();
             panelLeft.Hide();
-            
+            connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = Users.accdb ";
+
         }
 
         //private void FormMasina_Resize(object sender, EventArgs e) {
@@ -292,6 +294,9 @@ namespace Proiect_Cupii_Cezin_1048 {
         private void buttonAdaugareModel_MouseHover(object sender, EventArgs e) {
             toolTip1.Show("Adauga un model nou (CTRL+H)", buttonAdaugareModel);
         }
+        private void buttonPrint_MouseHover(object sender, EventArgs e) {
+            toolTip1.Show("Printeaza datele(CTRL+P)", buttonPrint);
+        }
         private void FormMasina_KeyDown(object sender, KeyEventArgs e) {
             if(e.Control==true && e.KeyCode==Keys.S) {
                 buttonSalvareMasini.PerformClick();
@@ -307,6 +312,9 @@ namespace Proiect_Cupii_Cezin_1048 {
             }
             if (e.Control == true && e.KeyCode == Keys.E) {
                 buttonVizualizareMasini.PerformClick();
+            }
+            if (e.Control == true && e.KeyCode == Keys.P) {
+                buttonPrint.PerformClick();
             }
 
 
@@ -346,6 +354,20 @@ namespace Proiect_Cupii_Cezin_1048 {
         }
 
         private void DVPrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
+            string userName;
+            OleDbConnection conexiune = new OleDbConnection(connString);
+            conexiune.Open();
+            OleDbCommand comanda = new OleDbCommand("SELECT username from users where isLogged=1");
+            comanda.Connection = conexiune;
+            OleDbDataReader reader = comanda.ExecuteReader();
+            while (reader.Read()) {
+                userName = reader["username"].ToString();
+                e.Graphics.DrawString("User: " + userName, new Font("Century Gothic", 12, FontStyle.Bold), Brushes.Black, new Point(50, 125));
+
+            }
+            reader.Close();
+            conexiune.Close();
+
             Bitmap bmp = Properties.Resources.logo;
             Image logo = bmp;
             Random rnd = new Random();
@@ -353,7 +375,6 @@ namespace Proiect_Cupii_Cezin_1048 {
             
             e.Graphics.DrawString("Print Nr: "+rnd.Next(1,100)+"/2020", new Font("Century Gothic", 12), Brushes.Black, new Point(50, 75));
             e.Graphics.DrawString("" + DateTime.Now, new Font("Century Gothic", 12), Brushes.Black, new Point(50, 95));
-            e.Graphics.DrawString("User: " + DateTime.Now, new Font("Century Gothic", 12,FontStyle.Bold), Brushes.Black, new Point(50, 125));
             e.Graphics.DrawString("RAPORT INTERMEDIAR", new Font("Century Gothic", 15,FontStyle.Bold), Brushes.Black, new Point((e.PageBounds.Width-200)/2, 250));
             e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 285));
             e.Graphics.DrawString("ID", new Font("Century Gothic", 12), Brushes.Black, new Point(125, 315));
@@ -427,6 +448,7 @@ namespace Proiect_Cupii_Cezin_1048 {
             Bitmap bmp2 = Properties.Resources.Semnatura_Cezin;
             Image semnatura = bmp2;
             e.Graphics.DrawString("Cezin Cupii", new Font("Century Gothic", 12), Brushes.Black, new Point(675, e.PageBounds.Height - 100));
+            e.Graphics.DrawString("Copyright© Only Logistics RO, Inc. All rights reserved.", new Font("Century Gothic", 12), Brushes.Black, new Point(50, e.PageBounds.Height - 50));
             e.Graphics.DrawImage(semnatura, 675, e.PageBounds.Height - 90, 100, 100);
 
         }
@@ -453,7 +475,7 @@ namespace Proiect_Cupii_Cezin_1048 {
                     }
                 }
                 catch (Exception ex) {
-                    msg.textProperty = "DATELE S-AU INCARCAT CU SUCCES!";
+                    msg.textProperty = "Fisierul a fost citit cu succes!";
                     msg.StartPosition = FormStartPosition.CenterScreen;
                     msg.Show();
 
@@ -466,5 +488,7 @@ namespace Proiect_Cupii_Cezin_1048 {
         private void FormMasina_DragEnter(object sender, DragEventArgs e) {
             e.Effect = DragDropEffects.All;
         }
+
+        
     }
 }

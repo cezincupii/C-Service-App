@@ -69,6 +69,7 @@
             this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.labelDashed = new System.Windows.Forms.Label();
+            this.copyright1 = new Proiect_Cupii_Cezin_1048.Copyright();
             this.panelAdaugaTransport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelAdaugaGreutate.SuspendLayout();
@@ -377,6 +378,7 @@
             // 
             // panelAfisareTransporturi
             // 
+            this.panelAfisareTransporturi.Controls.Add(this.copyright1);
             this.panelAfisareTransporturi.Controls.Add(this.pictureBox3);
             this.panelAfisareTransporturi.Controls.Add(this.listView1);
             this.panelAfisareTransporturi.Location = new System.Drawing.Point(256, 25);
@@ -517,6 +519,7 @@
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonPrint.UseVisualStyleBackColor = true;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            this.buttonPrint.MouseHover += new System.EventHandler(this.buttonPrint_MouseHover);
             // 
             // labelDashed
             // 
@@ -527,6 +530,14 @@
             this.labelDashed.TabIndex = 46;
             this.labelDashed.Text = "---------------------------------------------------------------------------------" +
     "----------------------------------------";
+            // 
+            // copyright1
+            // 
+            this.copyright1.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyright1.Location = new System.Drawing.Point(0, -16);
+            this.copyright1.Name = "copyright1";
+            this.copyright1.Size = new System.Drawing.Size(110, 81);
+            this.copyright1.TabIndex = 47;
             // 
             // FormTransport
             // 
@@ -611,5 +622,6 @@
         private System.Windows.Forms.PrintPreviewDialog DVPrintPreviewDialog1;
         private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.Label labelDashed;
+        private Copyright copyright1;
     }
 }

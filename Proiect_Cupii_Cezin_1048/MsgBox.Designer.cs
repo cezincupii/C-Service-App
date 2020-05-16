@@ -96,6 +96,7 @@
             this.Controls.Add(this.buttonAdaugaModel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MsgBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsgBox";
             this.Load += new System.EventHandler(this.MsgBox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

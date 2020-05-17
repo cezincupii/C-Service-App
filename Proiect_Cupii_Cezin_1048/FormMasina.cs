@@ -12,16 +12,36 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
 using System.Data.OleDb;
+using System.Drawing.Printing;
+using System.Net.Mail;
 
 namespace Proiect_Cupii_Cezin_1048 {
     public partial class FormMasina : Form {
         string connString;
         List<Masina> listaMasina = new List<Masina>();
+        string userName = null;
+        string email = null;
+        string password = null;
+        int random;
+
         public FormMasina() {
             InitializeComponent();
             panelLeft.Hide();
+            Random rnd = new Random();
+            random = rnd.Next(1, 100);
             connString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = Users.accdb ";
-
+            OleDbConnection conexiune = new OleDbConnection(connString);
+            conexiune.Open();
+            OleDbCommand comanda = new OleDbCommand("SELECT username,email,password from users where isLogged=1");
+            comanda.Connection = conexiune;
+            OleDbDataReader reader = comanda.ExecuteReader();
+            while (reader.Read()) {
+                userName = reader["username"].ToString();
+                email = reader["email"].ToString();
+                password = reader["password"].ToString();
+            }
+            reader.Close();
+            conexiune.Close();
         }
 
         //private void FormMasina_Resize(object sender, EventArgs e) {
@@ -144,6 +164,7 @@ namespace Proiect_Cupii_Cezin_1048 {
             panelAfisareMasini.Hide();
             panelAdaugaModel.Hide();
             this.KeyPreview = true;
+            
         }
 
         private void buttonAdaugareMasina_Click(object sender, EventArgs e) {
@@ -347,33 +368,79 @@ namespace Proiect_Cupii_Cezin_1048 {
         private void button3_Click(object sender, EventArgs e) {
             
         }
+        private void buttonEmail_Click(object sender, EventArgs e) {
+            string file = "Raport Masini #" + random + " " + userName;
+            string directory = Environment.CurrentDirectory;
+            string filePath = Path.Combine(directory, file + ".pdf");
+            PrintDocument doc = new PrintDocument() {
+                PrinterSettings = new PrinterSettings() {
+                    PrinterName = "Microsoft Print to PDF",
+                    PrintToFile = true,
+                    PrintFileName = Path.Combine(directory, file + ".pdf"),
+                }
+
+            };          
+            doc.PrintPage += new PrintPageEventHandler(DVPrintDocument1_PrintPage);
+            doc.Print();
+            System.Threading.Thread.Sleep(1000);
+            sendEmail(filePath);
+            
+        }
+
+        string MakeImageSrcData(string filename) {
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            byte[] filebytes = new byte[fs.Length];
+            fs.Read(filebytes, 0, Convert.ToInt32(fs.Length));
+            return "data:image/png;base64," +
+              Convert.ToBase64String(filebytes, Base64FormattingOptions.None);
+        }
+
+        private void sendEmail(string filePath) {
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+            mail.From = new MailAddress("onlylogistics2020@gmail.com");
+            mail.To.Add(email);
+            mail.Subject = "Raport Masini #"+random+" "+userName;
+            mail.IsBodyHtml = true;
+            //string htmlBody = File.ReadAllText("email.html");
+            string htmlTemplate = "<!DOCTYPE html> <html> <head> </head> <body style=\"margin: 0; padding: 0;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"padding: 10px 0 30px 0;\"> <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border: 1px solid #cccccc; border-collapse: collapse;\"> <tr> <td align=\"center\" bgcolor=\"#70bbd9\" style=\"padding: 40px 0 30px 0; background-color: #153643; font-size: 28px; font-weight: bold; font-family: 'Montserrat' , sans-serif;\"> <img src=\"" + MakeImageSrcData("logo2.0.png") + "\" alt=\"Creating Email Magic\" width=\"200\" height=\"200\" style=\"display: block;\" /> </td> </tr> <tr> <td bgcolor=\"#ffffff\" style=\"padding: 40px 30px 40px 30px;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"color: #153643; font-family: Arial, sans-serif; font-size: 24px;\"> <b>Draga {0}, </b> </td> </tr> <tr> <td style=\"padding: 20px 0 20px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;\"> Intrucat ai facut o cerere pentru a genera raportul #{1} pentru masini, il vei gasi atasat mai jos. <p style=\"margin-top:10px\">Pentru orice alte detalii, nu ezista sa ne contactezi</p> </td> </tr> <tr> <td> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td width=\"260\" valign=\"top\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td> </td> </tr> <tr> <td style=\"padding: 25px 0 0 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; text-align: justify\"> <b>Cu drag,<br></b><b>Echipa Only Logistics</b> </td> </tr> </table> </td> <td style=\"font-size: 0; line-height: 0;\" width=\"20\"> &nbsp; </td> <td width=\"260\" valign=\"top\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td> </td> </tr> <tr> <td style=\"padding: 25px 0 0 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; text-align: justify;\"> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr> <td bgcolor=\"#ee4c50\" style=\"padding: 30px 30px 30px 30px;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;\" width=\"75%\"> &reg; Cezin Cupii, Bucharest 2020<br /> </td> <td align=\"right\" width=\"25%\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> <tr> <td style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;\"> <a href=\"http://www.twitter.com/\" style=\"color: #ffffff;\"> <img src=\"" + MakeImageSrcData("tw.png") + "\" alt=\"Twitter\" width=\"38\" height=\"38\" style=\"display: block;\" border=\"0\" /> </a> </td> <td style=\"font-size: 0; line-height: 0;\" width=\"20\">&nbsp;</td> <td style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;\"> <a href=\"http://www.twitter.com/\" style=\"color: #ffffff;\"> <img src=\"" + MakeImageSrcData("fb.png") + "\" alt=\"Facebook\" width=\"38\" height=\"38\" style=\"display: block;\" border=\"0\" /> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </body> </html>";
+            string mailBody = string.Format(htmlTemplate, userName,random);
+            //mail.Body = "<body style=\"margin: 0; padding: 0;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"padding: 10px 0 30px 0;\"> <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"border: 1px solid #cccccc; border-collapse: collapse;\"> <tr> <td align=\"center\" bgcolor=\"#70bbd9\" style=\"padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;\"> </td> </tr> <tr> <td bgcolor=\"#ffffff\" style=\"padding: 40px 30px 40px 30px;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"color: #153643; font-family: Arial, sans-serif; font-size: 24px;\"> <b>Lorem ipsum dolor sit amet!</b> </td> </tr> <tr> <td style=\"padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat. </td> </tr> <tr> <td> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td width=\"260\" valign=\"top\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td> </td> </tr> <tr> <td style=\"padding: 25px 0 0 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat. </td> </tr> </table> </td> <td style=\"font-size: 0; line-height: 0;\" width=\"20\"> &nbsp; </td> <td width=\"260\" valign=\"top\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td> </td> </tr> <tr> <td style=\"padding: 25px 0 0 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat. </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr> <td bgcolor=\"#ee4c50\" style=\"padding: 30px 30px 30px 30px;\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\"> <tr> <td style=\"color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;\" width=\"75%\"> &reg; Someone, somewhere 2013<br /> <a href=\"#\" style=\"color: #ffffff;\"> <font color=\"#ffffff\">Unsubscribe</font> </a> to this newsletter instantly </td> <td align=\"right\" width=\"25%\"> <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"> <tr> <td style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;\"> </a> </td> <td style=\"font-size: 0; line-height: 0;\" width=\"20\">&nbsp;</td> <td style=\"font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;\"> </a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </body> ";
+
+            mail.Body = mailBody;
+
+            System.Net.Mail.Attachment attachment;
+            attachment = new System.Net.Mail.Attachment(filePath);
+            mail.Attachments.Add(attachment);
+
+
+            //parolafoarteputernica
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("onlylogistics2020@gmail.com", "parolafoarteputernica");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+            MsgBox msg = new MsgBox();
+            msg.textProperty = "Raportul a fost trimis !";
+            msg.Show();
+        }
 
         private void buttonPrint_Click(object sender, EventArgs e) {
+            DVPrintPreviewDialog1.Icon = Properties.Resources.logo2_0_Ugm_icon;
             DVPrintPreviewDialog1.Document = DVPrintDocument1;
             DVPrintPreviewDialog1.ShowDialog();
         }
 
         private void DVPrintDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
-            string userName;
-            OleDbConnection conexiune = new OleDbConnection(connString);
-            conexiune.Open();
-            OleDbCommand comanda = new OleDbCommand("SELECT username from users where isLogged=1");
-            comanda.Connection = conexiune;
-            OleDbDataReader reader = comanda.ExecuteReader();
-            while (reader.Read()) {
-                userName = reader["username"].ToString();
-                e.Graphics.DrawString("User: " + userName, new Font("Century Gothic", 12, FontStyle.Bold), Brushes.Black, new Point(50, 125));
-
-            }
-            reader.Close();
-            conexiune.Close();
+            
 
             Bitmap bmp = Properties.Resources.logo;
             Image logo = bmp;
-            Random rnd = new Random();
             e.Graphics.DrawImage(logo, (e.PageBounds.Width-logo.Width) / 2,40, 150, 150);
-            
-            e.Graphics.DrawString("Print Nr: "+rnd.Next(1,100)+"/2020", new Font("Century Gothic", 12), Brushes.Black, new Point(50, 75));
+            e.Graphics.DrawString("User: " + userName, new Font("Century Gothic", 12, FontStyle.Bold), Brushes.Black, new Point(50, 125));
+
+            e.Graphics.DrawString("Print Nr: "+random+"/2020", new Font("Century Gothic", 12), Brushes.Black, new Point(50, 75));
             e.Graphics.DrawString("" + DateTime.Now, new Font("Century Gothic", 12), Brushes.Black, new Point(50, 95));
             e.Graphics.DrawString("RAPORT INTERMEDIAR", new Font("Century Gothic", 15,FontStyle.Bold), Brushes.Black, new Point((e.PageBounds.Width-200)/2, 250));
             e.Graphics.DrawString(labelDashed.Text, new Font("Century Gothic", 12), Brushes.Black, new Point(95, 285));
@@ -451,6 +518,8 @@ namespace Proiect_Cupii_Cezin_1048 {
             e.Graphics.DrawString("Copyright© Only Logistics RO, Inc. All rights reserved.", new Font("Century Gothic", 12), Brushes.Black, new Point(50, e.PageBounds.Height - 50));
             e.Graphics.DrawImage(semnatura, 675, e.PageBounds.Height - 90, 100, 100);
 
+
+            
         }
 
         private void FormMasina_DragDrop(object sender, DragEventArgs e) {

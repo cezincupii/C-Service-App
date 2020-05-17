@@ -157,12 +157,7 @@ namespace Proiect_Cupii_Cezin_1048
             Application.Exit();
         }
 
-        private void buttonMaximize_Click(object sender, EventArgs e) {
-            if (WindowState == FormWindowState.Normal)
-                this.WindowState = FormWindowState.Maximized;
-            else
-                this.WindowState = FormWindowState.Normal;
-        }
+        
 
         private void buttonMinimize_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;

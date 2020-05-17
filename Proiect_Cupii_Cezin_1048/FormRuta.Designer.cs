@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRuta));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaRuta = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -52,6 +52,7 @@
             this.textBoxAMID = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panelAfisareRute = new System.Windows.Forms.Panel();
+            this.copyright1 = new Proiect_Cupii_Cezin_1048.Copyright();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,7 +72,7 @@
             this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
             this.labelDashed = new System.Windows.Forms.Label();
-            this.copyright1 = new Proiect_Cupii_Cezin_1048.Copyright();
+            this.buttonEmail = new System.Windows.Forms.Button();
             this.panelAdaugaRuta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
@@ -410,6 +411,14 @@
             this.panelAfisareRute.Size = new System.Drawing.Size(289, 375);
             this.panelAfisareRute.TabIndex = 39;
             // 
+            // copyright1
+            // 
+            this.copyright1.ForeColor = System.Drawing.SystemColors.Control;
+            this.copyright1.Location = new System.Drawing.Point(0, -16);
+            this.copyright1.Name = "copyright1";
+            this.copyright1.Size = new System.Drawing.Size(110, 81);
+            this.copyright1.TabIndex = 47;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
@@ -432,7 +441,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(0, 108);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(289, 267);
@@ -527,9 +536,9 @@
             this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
             this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
-            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Location = new System.Drawing.Point(509, 2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.Size = new System.Drawing.Size(120, 60);
             this.buttonPrint.TabIndex = 45;
             this.buttonPrint.Text = "Printeaza";
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -561,13 +570,22 @@
             this.labelDashed.Text = "---------------------------------------------------------------------------------" +
     "----------------------------------------";
             // 
-            // copyright1
+            // buttonEmail
             // 
-            this.copyright1.ForeColor = System.Drawing.SystemColors.Control;
-            this.copyright1.Location = new System.Drawing.Point(0, -16);
-            this.copyright1.Name = "copyright1";
-            this.copyright1.Size = new System.Drawing.Size(110, 81);
-            this.copyright1.TabIndex = 47;
+            this.buttonEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmail.FlatAppearance.BorderSize = 0;
+            this.buttonEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmail.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEmail.ForeColor = System.Drawing.Color.White;
+            this.buttonEmail.Image = ((System.Drawing.Image)(resources.GetObject("buttonEmail.Image")));
+            this.buttonEmail.Location = new System.Drawing.Point(509, 64);
+            this.buttonEmail.Name = "buttonEmail";
+            this.buttonEmail.Size = new System.Drawing.Size(120, 60);
+            this.buttonEmail.TabIndex = 47;
+            this.buttonEmail.Text = "Trimitere mail";
+            this.buttonEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
             // 
             // FormRuta
             // 
@@ -577,6 +595,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.buttonEmail);
             this.Controls.Add(this.labelDashed);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareRute);
@@ -654,5 +673,6 @@
         private System.Drawing.Printing.PrintDocument DVPrintDocument1;
         private System.Windows.Forms.Label labelDashed;
         private Copyright copyright1;
+        private System.Windows.Forms.Button buttonEmail;
     }
 }

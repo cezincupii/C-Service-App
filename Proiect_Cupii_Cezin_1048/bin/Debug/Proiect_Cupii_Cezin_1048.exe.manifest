@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Proiect_Cupii_Cezin_1048.exe" size="418784">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Proiect_Cupii_Cezin_1048.exe" size="553440">
       <assemblyIdentity name="Proiect_Cupii_Cezin_1048" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>L34RQ+jSG7tb1Hnqooyt9iJQCPm/fWdidTXAPozdVWI=</dsig:DigestValue>
+        <dsig:DigestValue>RCxWZnlCP8681kZ239+z7yCN562wRc4Oa8mSA1lGmwg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

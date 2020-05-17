@@ -41,7 +41,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelLogout = new System.Windows.Forms.Label();
             this.buttonMinimize = new System.Windows.Forms.Button();
-            this.buttonMaximize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
@@ -68,6 +67,7 @@
             this.panel1.Controls.Add(this.buttonAdaugareSofer);
             this.panel1.Controls.Add(this.buttonAdaugareMasina);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -173,8 +173,8 @@
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.labelLogout);
             this.panel3.Controls.Add(this.buttonMinimize);
-            this.panel3.Controls.Add(this.buttonMaximize);
             this.panel3.Controls.Add(this.buttonClose);
+            this.panel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(200, 0);
             this.panel3.Name = "panel3";
@@ -211,29 +211,13 @@
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMinimize.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(190)))), ((int)(((byte)(47)))));
-            this.buttonMinimize.Location = new System.Drawing.Point(675, 6);
+            this.buttonMinimize.Location = new System.Drawing.Point(715, 6);
             this.buttonMinimize.Name = "buttonMinimize";
             this.buttonMinimize.Size = new System.Drawing.Size(30, 30);
             this.buttonMinimize.TabIndex = 1;
             this.buttonMinimize.Text = "O";
             this.buttonMinimize.UseVisualStyleBackColor = true;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
-            // 
-            // buttonMaximize
-            // 
-            this.buttonMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonMaximize.FlatAppearance.BorderSize = 0;
-            this.buttonMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMaximize.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMaximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(204)))), ((int)(((byte)(65)))));
-            this.buttonMaximize.Location = new System.Drawing.Point(711, 6);
-            this.buttonMaximize.Name = "buttonMaximize";
-            this.buttonMaximize.Size = new System.Drawing.Size(30, 30);
-            this.buttonMaximize.TabIndex = 1;
-            this.buttonMaximize.Text = "O";
-            this.buttonMaximize.UseVisualStyleBackColor = true;
-            this.buttonMaximize.Click += new System.EventHandler(this.buttonMaximize_Click);
             // 
             // buttonClose
             // 
@@ -263,6 +247,7 @@
             // 
             this.panelDesktop.AllowDrop = true;
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.panelDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(200, 91);
             this.panelDesktop.Name = "panelDesktop";
@@ -327,7 +312,9 @@
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
@@ -356,7 +343,6 @@
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Button buttonMinimize;
-        private System.Windows.Forms.Button buttonMaximize;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;

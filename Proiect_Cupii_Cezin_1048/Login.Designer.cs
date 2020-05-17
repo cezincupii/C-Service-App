@@ -78,6 +78,7 @@
             this.textBoxPassword.TabIndex = 34;
             this.textBoxPassword.Text = "Parola";
             this.textBoxPassword.Click += new System.EventHandler(this.textBoxPassword_Click);
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
             // 
             // panelPassword
@@ -269,6 +270,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPassword)).EndInit();

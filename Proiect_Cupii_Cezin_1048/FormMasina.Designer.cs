@@ -73,6 +73,7 @@
             this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
             this.labelDashed = new System.Windows.Forms.Label();
+            this.buttonEmail = new System.Windows.Forms.Button();
             this.panelAdaugareMasina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
@@ -539,9 +540,9 @@
             this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
             this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
-            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Location = new System.Drawing.Point(509, 2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(120, 73);
+            this.buttonPrint.Size = new System.Drawing.Size(120, 60);
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Printeaza";
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -573,6 +574,23 @@
             this.labelDashed.Text = "---------------------------------------------------------------------------------" +
     "----------------------------------------";
             // 
+            // buttonEmail
+            // 
+            this.buttonEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmail.FlatAppearance.BorderSize = 0;
+            this.buttonEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmail.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEmail.ForeColor = System.Drawing.Color.White;
+            this.buttonEmail.Image = ((System.Drawing.Image)(resources.GetObject("buttonEmail.Image")));
+            this.buttonEmail.Location = new System.Drawing.Point(509, 64);
+            this.buttonEmail.Name = "buttonEmail";
+            this.buttonEmail.Size = new System.Drawing.Size(120, 60);
+            this.buttonEmail.TabIndex = 45;
+            this.buttonEmail.Text = "Trimitere mail";
+            this.buttonEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
+            // 
             // FormMasina
             // 
             this.AllowDrop = true;
@@ -581,6 +599,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(789, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.buttonEmail);
             this.Controls.Add(this.labelDashed);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelLeft);
@@ -661,5 +680,6 @@
         private System.Drawing.Printing.PrintDocument DVPrintDocument1;
         private System.Windows.Forms.Label labelDashed;
         private Copyright copyright1;
+        private System.Windows.Forms.Button buttonEmail;
     }
 }

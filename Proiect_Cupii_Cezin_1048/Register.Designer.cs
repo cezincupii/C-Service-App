@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -36,10 +37,14 @@
             this.panelPassword = new System.Windows.Forms.Panel();
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.panelUser = new System.Windows.Forms.Panel();
+            this.pictureBoxEmail = new System.Windows.Forms.PictureBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.panelEmail = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -68,7 +73,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox1.Location = new System.Drawing.Point(323, 212);
+            this.checkBox1.Location = new System.Drawing.Point(323, 243);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(137, 23);
             this.checkBox1.TabIndex = 59;
@@ -79,7 +84,7 @@
             // pictureBoxUser
             // 
             this.pictureBoxUser.Image = global::Proiect_Cupii_Cezin_1048.Properties.Resources.user;
-            this.pictureBoxUser.Location = new System.Drawing.Point(271, 97);
+            this.pictureBoxUser.Location = new System.Drawing.Point(271, 139);
             this.pictureBoxUser.Name = "pictureBoxUser";
             this.pictureBoxUser.Size = new System.Drawing.Size(37, 43);
             this.pictureBoxUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -126,7 +131,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(282, 249);
+            this.button1.Location = new System.Drawing.Point(282, 274);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(475, 39);
             this.button1.TabIndex = 54;
@@ -148,7 +153,7 @@
             // pictureBoxPassword
             // 
             this.pictureBoxPassword.Image = global::Proiect_Cupii_Cezin_1048.Properties.Resources.password;
-            this.pictureBoxPassword.Location = new System.Drawing.Point(271, 166);
+            this.pictureBoxPassword.Location = new System.Drawing.Point(271, 197);
             this.pictureBoxPassword.Name = "pictureBoxPassword";
             this.pictureBoxPassword.Size = new System.Drawing.Size(37, 43);
             this.pictureBoxPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -161,19 +166,19 @@
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.White;
-            this.textBoxPassword.Location = new System.Drawing.Point(323, 176);
+            this.textBoxPassword.Location = new System.Drawing.Point(323, 207);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(435, 25);
             this.textBoxPassword.TabIndex = 50;
-            this.textBoxPassword.TabStop = false;
             this.textBoxPassword.Text = "Parola";
             this.textBoxPassword.Click += new System.EventHandler(this.textBoxPassword_Click);
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
             // 
             // panelPassword
             // 
             this.panelPassword.BackColor = System.Drawing.Color.White;
-            this.panelPassword.Location = new System.Drawing.Point(323, 204);
+            this.panelPassword.Location = new System.Drawing.Point(323, 235);
             this.panelPassword.Name = "panelPassword";
             this.panelPassword.Size = new System.Drawing.Size(435, 1);
             this.panelPassword.TabIndex = 51;
@@ -184,7 +189,7 @@
             this.textBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUser.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUser.ForeColor = System.Drawing.Color.White;
-            this.textBoxUser.Location = new System.Drawing.Point(323, 111);
+            this.textBoxUser.Location = new System.Drawing.Point(323, 153);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(435, 25);
             this.textBoxUser.TabIndex = 48;
@@ -195,10 +200,42 @@
             // panelUser
             // 
             this.panelUser.BackColor = System.Drawing.Color.White;
-            this.panelUser.Location = new System.Drawing.Point(323, 139);
+            this.panelUser.Location = new System.Drawing.Point(323, 181);
             this.panelUser.Name = "panelUser";
             this.panelUser.Size = new System.Drawing.Size(435, 1);
             this.panelUser.TabIndex = 49;
+            // 
+            // pictureBoxEmail
+            // 
+            this.pictureBoxEmail.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEmail.Image")));
+            this.pictureBoxEmail.Location = new System.Drawing.Point(270, 84);
+            this.pictureBoxEmail.Name = "pictureBoxEmail";
+            this.pictureBoxEmail.Size = new System.Drawing.Size(37, 43);
+            this.pictureBoxEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxEmail.TabIndex = 62;
+            this.pictureBoxEmail.TabStop = false;
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxEmail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxEmail.ForeColor = System.Drawing.Color.White;
+            this.textBoxEmail.Location = new System.Drawing.Point(322, 98);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(435, 25);
+            this.textBoxEmail.TabIndex = 47;
+            this.textBoxEmail.Text = "Email";
+            this.textBoxEmail.Click += new System.EventHandler(this.textBoxEmail_Click);
+            this.textBoxEmail.Leave += new System.EventHandler(this.textBoxEmail_Leave);
+            // 
+            // panelEmail
+            // 
+            this.panelEmail.BackColor = System.Drawing.Color.White;
+            this.panelEmail.Location = new System.Drawing.Point(322, 126);
+            this.panelEmail.Name = "panelEmail";
+            this.panelEmail.Size = new System.Drawing.Size(435, 1);
+            this.panelEmail.TabIndex = 61;
             // 
             // Register
             // 
@@ -206,6 +243,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(780, 330);
+            this.Controls.Add(this.pictureBoxEmail);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.panelEmail);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBoxUser);
@@ -222,10 +262,12 @@
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Register_KeyDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +288,8 @@
         private System.Windows.Forms.Panel panelPassword;
         private System.Windows.Forms.TextBox textBoxUser;
         private System.Windows.Forms.Panel panelUser;
+        private System.Windows.Forms.PictureBox pictureBoxEmail;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Panel panelEmail;
     }
 }

@@ -483,4 +483,18 @@
   <metadata name="DVPrintDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>716, 60</value>
   </metadata>
+  <data name="buttonEmail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJ
+        TUUH5AURCB8N3LxvJQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFbSURBVFhH
+        7ZdNTsMwEIVzhq5aVUHiDIirVF2VJRfgCJyBmyEWtBUcoWuIp+8FO3LcyY/BTljU0qdMPJHeFydtkuI6
+        /s0QkRLcTURpY38GJpZizAHIRByRuXLh93ZborEPDszBB7Jum2xMnFDsJpLww3fYP1GAjQoTD5kl/PAt
+        9r857wRITgk1nPgCJIdEZzgJBUhKid5wogmQFBKD4aRLgPxFYlQ46RMgv5EYHU6GBEiMRFQ4GSNAfIkb
+        7B+DPnlnLyacRAtwoA5X4g1za9tOLtA+e5GNrZ3EK+r6wYLtlsc0dYJLoF3/9pzIwtaPdc+YT9RJbkIt
+        /KLHgfoJc8brj5boEmgvu37TVVJVz+BF6RE+8wcvhybQd+axhCvxFfQvBFKGO3olfIEc4Y7wD6qRcAI5
+        wx2qBAVmfiWb+6XUFis0tJ9aLg7IXNbhbtQroH9E5KD9YXId842iOANV0G0En6RDKgAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
 </root>

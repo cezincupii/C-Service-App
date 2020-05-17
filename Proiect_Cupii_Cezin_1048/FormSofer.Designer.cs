@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSofer));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
             this.panelAdaugaSofer = new System.Windows.Forms.Panel();
             this.tbTipCarnet = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -80,6 +80,7 @@
             this.DVPrintPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DVPrintDocument1 = new System.Drawing.Printing.PrintDocument();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonEmail = new System.Windows.Forms.Button();
             this.panelAdaugaSofer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel8.SuspendLayout();
@@ -508,7 +509,7 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.Control;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.listView1.Location = new System.Drawing.Point(3, 105);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(364, 267);
@@ -612,9 +613,9 @@
             this.buttonPrint.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
             this.buttonPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonPrint.Image")));
-            this.buttonPrint.Location = new System.Drawing.Point(509, 19);
+            this.buttonPrint.Location = new System.Drawing.Point(509, 2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(120, 63);
+            this.buttonPrint.Size = new System.Drawing.Size(120, 60);
             this.buttonPrint.TabIndex = 44;
             this.buttonPrint.Text = "Printeaza";
             this.buttonPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -640,6 +641,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // buttonEmail
+            // 
+            this.buttonEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmail.FlatAppearance.BorderSize = 0;
+            this.buttonEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmail.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEmail.ForeColor = System.Drawing.Color.White;
+            this.buttonEmail.Image = ((System.Drawing.Image)(resources.GetObject("buttonEmail.Image")));
+            this.buttonEmail.Location = new System.Drawing.Point(509, 61);
+            this.buttonEmail.Name = "buttonEmail";
+            this.buttonEmail.Size = new System.Drawing.Size(120, 56);
+            this.buttonEmail.TabIndex = 46;
+            this.buttonEmail.Text = "Trimitere mail";
+            this.buttonEmail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
+            // 
             // FormSofer
             // 
             this.AllowDrop = true;
@@ -648,6 +666,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(800, 522);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.buttonEmail);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.panelAfisareSoferi);
@@ -733,5 +752,6 @@
         private System.Windows.Forms.Label labelDashed;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Copyright copyright1;
+        private System.Windows.Forms.Button buttonEmail;
     }
 }

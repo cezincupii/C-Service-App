@@ -77,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivationForm.Designer.cs">
+      <DependentUpon>ActivationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Copyright.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     <Compile Include="Rute.cs" />
     <Compile Include="Sofer.cs" />
     <Compile Include="Transporturi.cs" />
+    <EmbeddedResource Include="ActivationForm.resx">
+      <DependentUpon>ActivationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Copyright.resx">
       <DependentUpon>Copyright.cs</DependentUpon>
     </EmbeddedResource>

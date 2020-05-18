@@ -43,3 +43,30 @@ C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\D
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Register.resources
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Copyright.resources
 C:\Users\Cezin\Documents\Proiect_Cupii_Cezin_1048\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csprojAssemblyReference.cache
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csprojAssemblyReference.cache
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Copyright.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Form1.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormMasina.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormRuta.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormSofer.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.FormTransport.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.HomePage.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Login.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.MsgBox.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Properties.Resources.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.Register.resources
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csproj.GenerateResource.cache
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csproj.CoreCompileInputs.cache
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.exe
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.pdb
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.exe.config
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.exe.manifest
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.application
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.exe
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\Proiect_Cupii_Cezin_1048.pdb
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\itextsharp.dll
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\bin\Debug\itextsharp.xml
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.exe.manifest
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.application
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.csproj.CopyComplete
+E:\Facultate\An 2 sem 2\PAW\C-Service-App\Proiect_Cupii_Cezin_1048\obj\Debug\Proiect_Cupii_Cezin_1048.ActivationForm.resources
